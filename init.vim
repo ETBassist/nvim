@@ -7,9 +7,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'
+Plug 'hashivim/vim-terraform'
+Plug 'michaeljsmith/vim-indent-object'
 
 call plug#end()
 
+filetype indent on
+set smartindent
 set nocompatible
 set nu
 set rnu
@@ -44,10 +48,7 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'FugitiveHead'
+    \             [ 'readonly', 'filename', 'modified' ] ]
     \ },
     \ }
 
@@ -98,9 +99,10 @@ nnoremap <leader>n :noh<CR>
 nnoremap <leader>rn :set rnu!<CR>
 nnoremap <leader>sp :set spell!<CR>
 
-nnoremap <leader>fzf :FZF<CR>
+nnoremap <leader>fzf :GFile<CR>
 nnoremap <leader>ff :Rg<CR>
 nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>, f,a<CR><ESC>
 nnoremap <leader>w :w<CR>
-
+nnoremap <leader>yf :let @+ = expand("%")<CR>
+nnoremap <leader>gp :silent %!pnpm prettier --stdin-filepath %<CR>
